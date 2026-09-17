@@ -35,13 +35,14 @@ while True:
     except:
         print("Please enter a valid amount.")
 
-print(f"Your rent is ${int(rent:.2f)} and that is {rent/income*100}%")
-print(f"Your utilities is {rent} and that is  ")
-print(f"Your groceries is {rent} and that is  ")
-print(f"Your transportation is {rent} and that is  ")
+print(f"Your rent is ${rent:.2f} and that is {int(rent/income*100)}% of your income.")
+print(f"Your utilities is ${util:.2f} and that is {int(util/income*100)}% of your income.")
+print(f"Your groceries is ${groceries:.2f} and that is {int(groceries/income*100)}% of your income.")
+print(f"Your transportation is ${transport:.2f} and that is {int(transport/income*100)}%")
 
-print(f"Your rent is {rent} and that is  ")
-print(f"You have f")
+
+print(f"You should save ${income/10} and that is 10% of your income")
+print(f"You have  of spending money each month ")
 
 # rent/income*100
 
