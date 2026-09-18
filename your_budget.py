@@ -43,7 +43,3 @@ print(f"Your transportation is ${transport:.2f} and that is {int(transport/incom
 
 print(f"You should save ${income/10} and that is 10% of your income")
 print(f"You have  of spending money each month ")
-
-# rent/income*100
-
-# f"${rent:.2f}"
