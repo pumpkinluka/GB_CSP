@@ -38,8 +38,12 @@ while True:
 print(f"Your rent is ${rent:.2f} and that is {int(rent/income*100)}% of your income.")
 print(f"Your utilities is ${util:.2f} and that is {int(util/income*100)}% of your income.")
 print(f"Your groceries is ${groceries:.2f} and that is {int(groceries/income*100)}% of your income.")
-print(f"Your transportation is ${transport:.2f} and that is {int(transport/income*100)}%")
-
+print(f"Your transportation is ${transport:.2f} and that is {int(transport/income*100)}% of your income.")
 
 print(f"You should save ${income/10} and that is 10% of your income")
 print(f"You have  of spending money each month ")
+
+savings = income/10
+leftover = income-(rent+util+groceries+transport+savings)
+print(f"You should save ${savings:.2f} a month, that is 10% of your income.")
+print(f"You have ${leftover:.2f} of spending money each month!")
