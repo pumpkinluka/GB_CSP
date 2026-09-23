@@ -30,7 +30,7 @@ if time < 1200 and time > 500:
     print("Good Morning!")
 elif time < 1700:
      print("Good Afternoon!")
-    if day != 'Saturday' or day != 'Sunday':
+if day != 'Saturday' or day != 'Sunday':
         print("How has school been?")
 elif time < 2000:
     print("Good Evening!")
