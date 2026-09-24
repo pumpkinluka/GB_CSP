@@ -7,44 +7,48 @@
   #  if letter .isupper():
     # update uppercase variable to true
 
+while True:
+    characters = False
+    uppercase = False
+    lowercase = False
+    number = False
+    symbol = False
+    score = 0
+    strength = "invalid"
 
-characters = False
-uppercase = False
-lowercase = False
-number = False
-symbol = False
-rules = 0
-strength = 'invalid"
+    password = input("What is your password:").strip()
 
-password = input("What is your password:").strip()
-
-if (len(password)) >= 8:
-    characters = True
-    rules = 1
-elif password .isupper():
-    uppercase = True
-    rules = 2
-elif password .islower():
-    lowercase = True
-    rules = 3
-elif password .isnumeric():
-    number = True
-    rules = 4
-elif password in "!@#$%^&*()_-=+[]{|\/.,<>?:;}"
-    symbol = True
-    rules = 5
-
-if rules == 5
-    strength = "Strong"
-elif rules <= 4 and rules > 2
-    strength = "Medium"
-elif rules <= 2
-    strength = "Weak"
+    if (len(password)) >= 8:
+        characters = True
+        score += 1
+    elif password .isupper():
+        uppercase = True
+        score += 1
+    elif password .islower():
+        lowercase = True
+        score += 1
+    elif password .isnumeric():
+        number = True
+        score += 1
+    elif password in "!@#$%^&*()_-=+[]{|\/.,<>?:;}":
+        symbol = True
+        score += 1
 
 
-print(f"At least 8 characters: {characters}")
-print(f"Has an uppercase letter: {uppercase} ")
-print(f"Has a lowercase letter: {lowercase}")
-print(f"Has a number: {number}")
-print(f"Has a symbol: {symbol}")
-print(f"Your password strength is: {strength}")
+    if score == 5:
+        strength = "Strong"
+    elif score <= 4 and score > 2:
+        strength = "Medium"
+    elif score < 3:
+        strength = "Weak"
+
+    combined = characters, uppercase, lowercase, number, symbol
+
+    print(f"At least 8 characters: {characters}")
+    print(f"Has an uppercase letter: {uppercase} ")
+    print(f"Has a lowercase letter: {lowercase}")
+    print(f"Has a number: {number}")
+    print(f"Has a symbol: {symbol}")
+    print(f"Your password strength is: {strength}")
+
+    if combined
