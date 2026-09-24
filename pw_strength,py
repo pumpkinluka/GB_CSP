@@ -51,4 +51,5 @@ while True:
     print(f"Has a symbol: {symbol}")
     print(f"Your password strength is: {strength}")
 
-    if combined
+    if combined:
+        break
