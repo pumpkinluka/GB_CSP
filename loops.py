@@ -20,3 +20,11 @@ while True:
     print("Duck....")
     ducks += 1 # ducks = ducks + 1
 print("GOOSE!!!!")
+
+# Complex Data Type : holds other data in it
+siblings = ["Bella", "Liam"] # <- Surround by brackets
+    # "jakhdsk" must be valid data type
+    # variables seperated by commas
+    # a variable can hold more than one piece of information
+
+print(siblings[1])
