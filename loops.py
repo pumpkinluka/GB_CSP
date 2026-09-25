@@ -27,4 +27,27 @@ siblings = ["Bella", "Liam"] # <- Surround by brackets
     # variables seperated by commas
     # a variable can hold more than one piece of information
 
+# Adding to a list 
 print(siblings[1])
+siblings.append("Alexa") # <- adds the item to the end of the list 
+siblings.insert(3,"Ash")
+print(siblings)
+
+# Remove from a list
+siblings.pop() # <- if no number given pop removes the last item
+print(siblings)
+
+# print each item in a list 
+for sibling in siblings:
+    print(sibling)
+
+# For Loops
+for num in range(1,25): # range : builds a list for you
+    if num % 15 == 0:
+        print("FizzBuzz")
+    elif num % 3 == 0:
+        print("Fizz")
+    elif num % 5 == 0:
+        print("Buzz")
+    else:
+        print(num)
