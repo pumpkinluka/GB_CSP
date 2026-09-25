@@ -1,63 +1,94 @@
-# GB, Password Strength Checker
+# GB, 7th, Password Strength Checker
 
-while True:
-    characters = False
-    uppercase = False
-    lowercase = False
-    number = False
-    symbol = False
-    rules = 0
-    strength = "invalid"
-    missing = []
-    combined = characters+uppercase+lowercase+number+symbol
+characters = False
+uppercase = False
+lowercase = False
+number = False
+symbol = False
+score = 0
+strength = "Weak"
 
-    password = input("What is your password:").strip()
+password = input("What is your password:").strip()
 
-    if (len(password)) >= 8:
-        characters = True
-        rules += 1
-    else: 
-        missing.append("at least 8 characters")
+if (len(password)) >= 8:
+    characters = True
+    score = score + 1
 
-    if password .isupper():
+print(f"At least 8 characters: {characters}")
+
+
+for letter in password:
+    if letter.isupper():
         uppercase = True
-        rules += 1
-    else: 
-        missing.append("an uppercase letter")
 
-    if password .islower():
+if uppercase:
+    score = score + 1
+
+print(f"Has an uppercase letter: {uppercase} ")
+   
+for letter in password:
+    if letter.islower():
         lowercase = True
-        rules += 1
-    else: 
-        missing.append("a lowercase letter")
 
-    if password .isnumeric():
+if lowercase:
+    score = score + 1
+
+print(f"Has a lowercase letter: {lowercase}")
+  
+for letter in password:
+    if letter.isnumeric():
         number = True
-        rules += 1
-    else: 
-        missing.append("a number")
 
-    if password in "!@#$%^&*()_-=+[]{.,<>?:;}":
+if number:
+    score = score + 1
+
+print(f"Has a number: {number}")
+  
+for letter in password:
+    if letter in "!@#$%^&*()_-=[+]{.,<>?:;}/~|":
         symbol = True
-        rules += 1
-    else: 
-        missing.append("a symbol")
 
-    if rules == 5:
-        strength = "Strong"
-    elif rules <= 4 and rules > 2:
-        strength = "Medium"
-    elif rules < 3:
+if symbol:
+    score = score + 1
+
+print(f"Has a symbol: {symbol}")
+
+
+if score == 5:
+    strength = "Strong"
+elif score <= 4 and score > 2:
+    strength = "Medium"
+elif score < 3:
         strength = "Weak"
 
-    print(f"At least 8 characters: {characters}")
-    print(f"Has an uppercase letter: {uppercase} ")
-    print(f"Has a lowercase letter: {lowercase}")
-    print(f"Has a number: {number}")
-    print(f"Has a symbol: {symbol}")
-    print(f"Your password strength is: {strength}")
+print(f"Your password strength is: {strength}")
 
-    if combined:
-        print("All good!")
-    else:
-        print('To make it strong, add: ' + ", ".join(missing))
+if strength != "Strong":
+    missing = ""
+
+    if not characters:
+        missing = missing + "at least 8 characters"
+
+    if not uppercase:
+        if missing != "":
+            missing = missing + ", "
+        missing = missing + "an uppercase letter"
+
+    if not lowercase:
+        if missing != "":
+            missing = missing + ", "
+        missing = missing + "a lowercase letter"
+
+    if not number:
+            if missing != "":
+                missing = missing + ", "
+            missing = missing + "a number"
+
+    if not symbol:
+            if missing != "":
+                missing = missing + ", "
+            missing = missing + "a symbol"
+
+    print(f"To make it strong, add: {missing}")
+    
+        
