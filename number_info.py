@@ -7,26 +7,18 @@ for number in range(1,21):
 
     if number % 2 == 0:
         word = "even"
-        while number / 5:
+        if number % 5 == 0:
             print(f"{number} is {word} and {div}")
-            break
         else: 
             div = "not divisible by 5"
             print(f"{number} is {word} and {div}")
-            break
 
 
 
     else:
-        while number / 5:
+        if number % 5 == 0:
             print(f"{number} is {word} and {div}")
-            break
         else:
             div = "not divisible by 5"
             print(f"{number} is {word} and {div}")
-            break
-
-
-
-
-        
+            
