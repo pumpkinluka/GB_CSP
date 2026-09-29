@@ -13,12 +13,10 @@ for number in range(1,21):
             div = "not divisible by 5"
             print(f"{number} is {word} and {div}")
 
-
-
     else:
         if number % 5 == 0:
             print(f"{number} is {word} and {div}")
         else:
             div = "not divisible by 5"
             print(f"{number} is {word} and {div}")
-            
+  
