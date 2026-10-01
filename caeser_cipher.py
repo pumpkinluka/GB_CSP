@@ -1,8 +1,15 @@
 # GB. Caeser Cipher
 
-output = input("Would you like to (E)ncrypt or (D)ecrypt a message?: ").strip()
+while True:
+    output = input("Would you like to (E)ncrypt or (D)ecrypt a message?: ").strip().capitalize()
+    if output .isnumeric():
+        print("wheres my letter")
+    else:
+        print("please enter e or d")
+
+
 message = input("Enter your message: ").strip()
-shift = input("Enter a shift amount: ").strip()
+shift = float(input("Enter a shift amount: ").strip())
 
 def caeser_shift(message, shift):
 
@@ -19,9 +26,10 @@ def user_output(kind):
     crypt_msg = print(f"Your {kind} message is: ")
     return crypt_msg
 
-
-decrypt = user_output("decrypted")
-encrypt = user_output("encrypted")
+if output == "D":
+    decrypt = user_output("decrypted")
+elif output == "E":
+    encrypt = user_output("encrypted")
 
 
 
