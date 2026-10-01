@@ -1,9 +1,17 @@
 # GB. Caeser Cipher
 
 output = input("Would you like to (E)ncrypt or (D)ecrypt a message?: ")
+message = input("Enter your message: ")
+shift = input("Enter a shift amount: ")
 
-for letter in output:
 
+for character in message:
+    if character .isalpha():
+        character = ord(character)
+        character = character + shift
+        if character >= 122:
+            character = character - 26
+        character = chr(character)
     crypt = "encrypted"
     e = "E"
     d = "D"
@@ -29,9 +37,7 @@ decrypt = user_output("decrypted")
 encrypt = user_output("encrypted")
 
 
-#message = input("Enter your message: ")
 
-#shift_amount = input("Enter a shift amount: ")
 
 
 
