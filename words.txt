@@ -12,5 +12,8 @@ benzene
 curiousity
 pneumonia
 chlorophyll
+liminal
+house
+city
 
 

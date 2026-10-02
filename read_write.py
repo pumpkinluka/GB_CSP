@@ -7,3 +7,4 @@ with open("practice.txt", 'r+') as file: # <- r+ : lets u read and write
 
 with open("practice.txt", "a") as file:
     file.write("\nchiikawa is super goated")
+
