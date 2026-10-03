@@ -6,11 +6,16 @@ with open('stats.txt', "r") as file:
     content = file.read()
 
 with open("words.txt", "r") as file:
-    content2 = file.read()
+    content2 = file.read().splitlines()
 
 word = random.choice(content2)
 
+print(word)
+
 print(f"Loading stats from stats.txt... ({content})")
+
+
+
 
 # create a list of 10 words on a seperate txt file
 # create another file holes win/loss counts. holds two numbers how many wins and losses
