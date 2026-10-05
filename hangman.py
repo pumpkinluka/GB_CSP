@@ -3,24 +3,48 @@
 import random
 
 with open('stats.txt', "r") as file:
-    content = file.read()
+    stats = file.read().split(",")
 
 with open("words.txt", "r") as file:
-    content2 = file.read().splitlines()
+    content = file.read().split(",")
 
-word = random.choice(content2)
+word = random.choice(content)
 
-print(word)
+print("Loading word list from words.txt...")
 
-print(f"Loading stats from stats.txt... ({content})")
+print(f"Loading stats from stats.txt... ({stats})")
+
+print(f"Word: {len(word[0:3])}")
+
+print("Guessed letters: (none yet)")
+
+wrong_guesses = 6
+
+guessed_letters = ""
 
 
+def hangman(wrong_guesses):
 
+
+# def characters(word, guessed_letters):
+    
+    display_word = ""
+
+    for letter in word:
+        if letter is in word:
+            display_word += guessed_letters
+        else:
+            display_word += "_"
+
+    return display_word
+
+
+guess = input("Guess a letter:").strip()
 
 # create a list of 10 words on a seperate txt file
 # create another file holes win/loss counts. holds two numbers how many wins and losses
 # read your files
-# use split(" , ") on the content of the words txt document to create your list of words
+# use split(",") on the content of the words txt document to create your list of words
 # pull win and lose totals from the other txt file and save them as 2 seperate variables
 # build the hangman game
 # save the correct word as a variable random.choice(name of the list)
@@ -29,12 +53,12 @@ print(f"Loading stats from stats.txt... ({content})")
 # function to display the hangman (needs number of wrong guesses)
 
 # """
- #  _______
- #  |     |
-  # |     O
-  # |    /|\.
- #  |    / \.
-  # |_______
+# _______
+# |     |
+# |     O
+# |    /|\.
+# |    / \.
+# |_______
 # """
 # function to show the letters and spaces (the correct word, letters that have been guessed)
 # variable for display word (starts as an empty string)
