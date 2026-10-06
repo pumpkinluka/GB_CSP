@@ -1,92 +1,165 @@
 # GB, 7th, Hangman
 
+# Player is given 6 wrong guesses
+
 import random
 
-with open('stats.txt', "r") as file:
-    stats = file.read().split(",")
+print("Loading word list from words.txt...")
+
+try:
+    with open('stats.txt', "r") as file:
+        stats = file.read().split(",")
+        wins = int(stats[0])
+        losses = int(stats[1])
+        print(f"Loading stats from stats.txt... (Wins: {wins}, Losses: {losses})")
+except:
+    wins = 0
+    losses = 0
 
 with open("words.txt", "r") as file:
     content = file.read().split(",")
 
-word = random.choice(content)
 
-print("Loading word list from words.txt...")
+def stage(wrong_guesses):
+    hangman = """
+    _______
+    |     |
+    |     
+    |    
+    |    
+    |_______
+    """
 
-print(f"Loading stats from stats.txt... ({stats})")
+    if wrong_guesses == 1:
+        hangman = """
+    _______
+    |     |
+    |     O
+    |    
+    |   
+    |_______
+            """
+    elif wrong_guesses == 2:
+        hangman = """
+    _______
+    |     |
+    |     O
+    |     |
+    |    
+    |_______
+            """
+    elif wrong_guesses == 3:
+        hangman = """
+    _______
+    |     |
+    |     O
+    |    /|
+    |    
+    |_______
+            """
+    elif wrong_guesses == 4:
+        hangman = """
+    _______
+    |     |
+    |     O
+    |    /|\\
+    |    
+    |_______
+            """
+    elif wrong_guesses == 5:
+        hangman = """
+    _______
+    |     |
+    |     O
+    |    /|\\
+    |    / 
+    |_______
+            """
+    elif wrong_guesses == 6:
+        hangman = """
+    _______
+    |     |
+    |     O
+    |    /|\\
+    |    / \\
+    |_______
+            """
+    
+    return hangman
 
-print(f"Word: {len(word[0:3])}")
 
-print("Guessed letters: (none yet)")
-
-wrong_guesses = 6
-
-guessed_letters = ""
-
-
-def hangman(wrong_guesses):
-
-
-# def characters(word, guessed_letters):
+def characters(word, guessed_letters):
     
     display_word = ""
 
     for letter in word:
-        if letter is in word:
-            display_word += guessed_letters
+        if letter in guessed_letters:
+            display_word += letter
         else:
             display_word += "_"
 
     return display_word
 
 
-guess = input("Guess a letter:").strip()
+while True:
+    word = random.choice(content).upper()
+    wrong_guesses = 0
+    guessed_letters = []
+    while True:
+        show = stage(wrong_guesses)
+        print(show)
+        display = characters(word, guessed_letters)
+        print(f"Word: {display}")
 
-# create a list of 10 words on a seperate txt file
-# create another file holes win/loss counts. holds two numbers how many wins and losses
-# read your files
-# use split(",") on the content of the words txt document to create your list of words
-# pull win and lose totals from the other txt file and save them as 2 seperate variables
-# build the hangman game
-# save the correct word as a variable random.choice(name of the list)
-# number of wrong guesses
-# what letters have been guessed 
-# function to display the hangman (needs number of wrong guesses)
+        fancy_guess = ""
 
-# """
-# _______
-# |     |
-# |     O
-# |    /|\.
-# |    / \.
-# |_______
-# """
-# function to show the letters and spaces (the correct word, letters that have been guessed)
-# variable for display word (starts as an empty string)
-# loop over the correct word
-    # check if letter has been guessed
-        # then add letter to the display variable
-    # if they haven't guessed the letter
-        # add an underscore to the display word
-# return the finished display word (outside of the loop)
+        for letter in guessed_letters:
+            if fancy_guess != "":
+                fancy_guess += ", "
+            fancy_guess += letter
 
-# main game loop (while True)
-    # call function to show hangman
-    # print function call to show display word
-    # create variable and ask user to guess a letter
-    # add the letter to a list of guessed letters
-    # check if not letter in word:
-        # increase incorrect guesses
-    # check if display word is same as the word 
-        # tell user they won!!
-        # increase win total
-        # ask if they wanna play again
-            # reset random word, reset wrong guess count
-        # If not
-        # break out of loop
-        # write your wins and losses in ur txt file
-# check to see if they lost (if they have 6 wrong guesses)
-    # tell them they lost and they suck and theyre a loser
-    # tell them what the word is
-    # increase the lose count
-    # ask if they want to play again
+        print(f"Guessed letters: {fancy_guess}")
+        print(f"Wrong guesses: {wrong_guesses}")
+        guess = input("Guess a letter: ").strip().upper()
 
+        if len(guess) != 1 or not guess.isalpha():
+            print("Please enter exactly ONE. LETTER.")
+        else:
+            if guess in guessed_letters:
+                print(f"You already guessed {guess}!")
+            else:
+                guessed_letters.append(guess)
+
+                if guess in word:
+                    print(f"Hehe, {guess} is in the word!")
+                elif guess not in word:
+                    wrong_guesses += 1
+                    print(f"{guess} is not in the word! Try again.")
+
+        display = characters(word, guessed_letters)
+
+        if display == word:
+            wins += 1
+            print(f"Congrats! You guessed the word: {word}")
+            
+            break
+    
+        if wrong_guesses == 6:
+            print("Aww, you lost! :c loser")
+            print(f"The word was: {word}")
+            losses += 1
+            break
+
+    print(f"Updated stats -- Wins: {wins}, Losses: {losses}")
+
+    again = input("Do you wish to play again?(Y/N): ").strip().upper()
+    if again in ['Y']:
+        print("Here we go once again!")
+    elif again in ['N']:
+        print("Ok, thanks for playing!")
+        break
+    else:
+        print("Y = Yes, N = No, incase you needed help there.")
+
+with open('stats.txt', "w") as file:
+    file.write(f"{wins}, {losses}")
