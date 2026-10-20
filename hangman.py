@@ -163,3 +163,17 @@ while True:
 
 with open('stats.txt', "w") as file:
     file.write(f"{wins}, {losses}")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
